@@ -8,6 +8,7 @@ import com.example.demo.repository.GroupRepository;
 import com.example.demo.repository.TraineeRepository;
 import com.example.demo.repository.TrainerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,6 +33,7 @@ public class GroupService {
         return groupRepository.findAll();
     }
 
+    @Transactional
     public List<Group> getAutoGroupingList() {
         initGroup();
         List<Trainer> allTrainer = trainerRepository.findAll();
@@ -73,6 +75,8 @@ public class GroupService {
     }
 
     private void initGroup() {
+        traineeRepository.clearGroupForeignKey();
+        trainerRepository.clearGroupForeignKey();
         groupRepository.deleteAll();
     }
 }
