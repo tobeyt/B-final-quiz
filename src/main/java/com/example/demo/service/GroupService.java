@@ -10,6 +10,7 @@ import com.example.demo.repository.TrainerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ public class GroupService {
     private final TraineeRepository traineeRepository;
     private final TrainerRepository trainerRepository;
 
-    private static List<Group> groups;
+    private static List<Group> groups = new ArrayList<>();
 
     public GroupService(GroupRepository groupRepository, TraineeRepository traineeRepository, TrainerRepository trainerRepository) {
         this.groupRepository = groupRepository;
