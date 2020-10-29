@@ -21,4 +21,8 @@ public class TraineeService {
     public Trainee addNewTrainee(Trainee trainee) {
         return traineeRepository.save(trainee);
     }
+
+    public void deleteTraineeById(Long id) {
+        traineeRepository.deleteById(id);
+    }
 }
