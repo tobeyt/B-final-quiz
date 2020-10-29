@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.Trainee;
+import com.example.demo.exception.CommonException;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class TraineeService {
     }
 
     public void deleteTraineeById(Long id) {
+        traineeRepository.findById(id).orElseThrow(() -> new CommonException("学员不存在"));
         traineeRepository.deleteById(id);
     }
 }

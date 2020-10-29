@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.Group;
 import com.example.demo.dto.Trainee;
 import com.example.demo.dto.Trainer;
-import com.example.demo.exception.CommonException;
+import com.example.demo.exception.TrainerException;
 import com.example.demo.repository.GroupRepository;
 import com.example.demo.repository.TraineeRepository;
 import com.example.demo.repository.TrainerRepository;
@@ -23,6 +23,8 @@ public class GroupService {
     private final TraineeRepository traineeRepository;
     private final TrainerRepository trainerRepository;
 
+    private static List<Group> groups;
+
     public GroupService(GroupRepository groupRepository, TraineeRepository traineeRepository, TrainerRepository trainerRepository) {
         this.groupRepository = groupRepository;
         this.traineeRepository = traineeRepository;
@@ -30,7 +32,7 @@ public class GroupService {
     }
 
     public List<Group> getAllGroups() {
-        return groupRepository.findAll();
+        return groups;
     }
 
     @Transactional
@@ -41,7 +43,7 @@ public class GroupService {
         int trainerCount = allTrainer.size();
         int traineeCount = allTrainee.size();
         if (trainerCount < TRAINER_NUMBER_OF_ONE_GROUP) {
-            throw new CommonException("分组失败，讲师人数少于2人");
+            throw new TrainerException("分组失败，讲师人数少于2人");
         }
         Collections.shuffle(allTrainer);
         Collections.shuffle(allTrainee);
@@ -71,7 +73,11 @@ public class GroupService {
 
             groupRepository.save(group);
         }
-        return groupRepository.findAll();
+
+        List<Group> groupList = groupRepository.findAll();
+
+        groups = groupList;
+        return groupList;
     }
 
     private void initGroup() {

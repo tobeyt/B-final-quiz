@@ -19,6 +19,13 @@ public class GlobalExceptionHandler {
                 exception.getMessage());
     }
 
+    @ExceptionHandler(TrainerException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Error handle(TrainerException exception) {
+        return new Error(Instant.now().toString(), HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                exception.getMessage());
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Error handle(MethodArgumentNotValidException exception) {
