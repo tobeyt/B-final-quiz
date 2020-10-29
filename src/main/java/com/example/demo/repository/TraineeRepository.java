@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TraineeRepository extends JpaRepository<Trainee, Long> {
-    List<Trainee> findByIsGrouped(boolean grouped);
+    List<Trainee> findByGrouped(boolean grouped);
 }

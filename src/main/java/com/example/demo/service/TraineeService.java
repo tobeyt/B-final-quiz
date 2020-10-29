@@ -15,6 +15,10 @@ public class TraineeService {
     }
 
     public List<Trainee> getTrainees(boolean grouped) {
-        return traineeRepository.findByIsGrouped(grouped);
+        return traineeRepository.findByGrouped(grouped);
+    }
+
+    public Trainee addNewTrainee(Trainee trainee) {
+        return traineeRepository.save(trainee);
     }
 }

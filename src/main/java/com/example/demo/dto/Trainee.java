@@ -28,5 +28,5 @@ public class Trainee {
     private String name;
 
     @JsonIgnore
-    private boolean isGrouped;
+    private boolean grouped;
 }
