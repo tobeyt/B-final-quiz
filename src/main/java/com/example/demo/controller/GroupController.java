@@ -26,6 +26,7 @@ public class GroupController {
     }
 
     @PostMapping("/auto-grouping")
+    // TODO GTB-知识点: - 违反Restful实践, Post请求成功后应该返回201
     public List<Group> getAutoGroupingList(){
         return groupService.getAutoGroupingList();
     }

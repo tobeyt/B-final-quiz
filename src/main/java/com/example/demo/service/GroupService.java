@@ -37,6 +37,8 @@ public class GroupService {
     }
 
     @Transactional
+    // TODO GTB-知识点: + 分组时使用了事务注解，good
+    // TODO GTB-工程实践: - 长方法，可以抽成多个方法提高可读性
     public List<Group> getAutoGroupingList() {
         initGroup();
         List<Trainer> allTrainer = trainerRepository.findAll();

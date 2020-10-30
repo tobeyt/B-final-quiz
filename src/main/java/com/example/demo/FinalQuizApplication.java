@@ -9,6 +9,15 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// TODO GTB-工程实践: * 分包合理
+// TODO GTB-知识点: * 对lombok的掌握不错
+// TODO GTB-知识点: * 对三层架构的掌握不错
+// TODO GTB-知识点: * 对RESTful实践的掌握不错
+// TODO GTB-知识点: * 对Spring MVC注解的掌握不错
+// TODO GTB-知识点: * 对异常处理的掌握不错
+// TODO GTB-完成度: * 没有进行异常校验
+// TODO GTB-完成度: * 其它功能都完成了
+// TODO GTB-测试: * 只有Controller测试，但覆盖相对全面
 @SpringBootApplication
 public class FinalQuizApplication implements ApplicationRunner {
     private final TraineeService traineeService;
@@ -23,6 +32,7 @@ public class FinalQuizApplication implements ApplicationRunner {
         SpringApplication.run(FinalQuizApplication.class, args);
     }
 
+    // TODO GTB-知识点: + 用ApplicationRunner初始化数据
     @Override
     public void run(ApplicationArguments args) throws Exception {
         traineeService.addNewTrainee(Trainee.builder().name("成吉思汗").build());
